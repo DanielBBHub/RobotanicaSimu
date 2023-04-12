@@ -495,6 +495,8 @@ GameObject:
   - component: {fileID: 242107923}
   - component: {fileID: 242107922}
   - component: {fileID: 242107921}
+  - component: {fileID: 242107924}
+  - component: {fileID: 242107925}
   m_Layer: 0
   m_Name: cube
   m_TagString: Untagged
@@ -510,7 +512,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242107918}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.416, y: 1.658, z: -2.178}
+  m_LocalPosition: {x: -0.42, y: 2.18, z: -2.178}
   m_LocalScale: {x: 0.47529003, y: 0.4305141, z: 0.25872934}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -580,6 +582,34 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242107918}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &242107924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242107918}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16157874be9795869a3cb39efa721c7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topicName: pos_rot
+  cube: {fileID: 242107918}
+  publishMessageFrequency: 0.5
+--- !u!114 &242107925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242107918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585964a082ab58035b535ed431154fe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cube: {fileID: 242107918}
 --- !u!1 &323173943
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,7 +620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 323173944}
   m_Layer: 0
-  m_Name: ROS2Publisher
+  m_Name: ROS2Subscriber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2841,7 +2871,7 @@ GameObject:
   - component: {fileID: 1025632786}
   - component: {fileID: 1025632785}
   - component: {fileID: 1025632784}
-  - component: {fileID: 1025632783}
+  - component: {fileID: 1025632787}
   m_Layer: 0
   m_Name: caster_back_link
   m_TagString: Untagged
@@ -2866,22 +2896,6 @@ Transform:
   m_Father: {fileID: 2097171723}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1025632783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1025632781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 074632cab556f5b408839af8574308df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xAxis: 0
-  jointName: caster_back_joint
-  EffortLimit: 1000
-  VelocityLimit: 1000
 --- !u!114 &1025632784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2965,6 +2979,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBaseLink: 0
+--- !u!114 &1025632787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025632781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5edcd03b4c4040bc550e77e4028b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xAxis: 0
+  jointName: 
+  EffortLimit: 1000
+  VelocityLimit: 1000
 --- !u!1 &1057228635
 GameObject:
   m_ObjectHideFlags: 0
@@ -4259,12 +4289,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topic: /scan
   PublishPeriodSeconds: 0.1
-  RangeMetersMin: 0
-  RangeMetersMax: 1000
-  ScanAngleStartDegrees: -45
-  ScanAngleEndDegrees: 45
+  RangeMetersMin: 0.3
+  RangeMetersMax: 2
+  ScanAngleStartDegrees: 0
+  ScanAngleEndDegrees: 360
   ScanOffsetAfterPublish: 0
-  NumMeasurementsPerScan: 200
+  NumMeasurementsPerScan: 1000
   TimeBetweenMeasurementsSeconds: 0.01
   LayerMaskName: tutrlebot3_burger
   FrameId: base_scan
